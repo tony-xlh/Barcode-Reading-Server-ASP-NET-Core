@@ -7,4 +7,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Dynamsoft.DotNet.Barcode" Version="9.6.20" />
+  </ItemGroup>
+
 </Project>
