@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Dynamsoft.DotNet.Barcode" Version="9.6.20" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
   </ItemGroup>
 
 </Project>

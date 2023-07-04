@@ -1,11 +1,22 @@
 using Dynamsoft;
 using Dynamsoft.DBR;
+using Microsoft.OpenApi.Models;
 
 initLicense();
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c =>
+   {
+       c.SwaggerDoc("v1", new OpenApiInfo { Title = "Barcode Reading API", Description = "Read barcodes from images.", Version = "v1" });
+   });
 
 var app = builder.Build();
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+   {
+     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Barcode Reading API V1");
+   });
 app.UseStaticFiles();
 // Shows UseCors with CorsPolicyBuilder.
 app.UseCors(builder =>
