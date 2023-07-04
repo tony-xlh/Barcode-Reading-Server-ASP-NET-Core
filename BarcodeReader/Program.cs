@@ -3,8 +3,18 @@ using Dynamsoft.DBR;
 
 initLicense();
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddCors();
+
 var app = builder.Build();
 app.UseStaticFiles();
+// Shows UseCors with CorsPolicyBuilder.
+app.UseCors(builder =>
+{
+    builder.AllowAnyOrigin()
+           .AllowAnyMethod()
+           .AllowAnyHeader();
+});
+
 app.MapPost("/readBarcodes", (Image image) => {
     BarcodeReader reader = new BarcodeReader();
     long startTime = getUnixTimestamp();
